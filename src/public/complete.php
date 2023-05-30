@@ -18,12 +18,6 @@ if (!empty($name) && !empty($email) && !empty($phone_number)) {
         $dbPassword
     );
 
-    $pdo = new PDO(
-        'mysql:host=mysql; dbname=bookingform; charset=utf8',
-        $dbUserName,
-        $dbPassword
-    );
-
     $sql =
         'INSERT INTO `bookings` (`name`, `email`, `phone_number`) VALUES (:name, :email, :phone_number)';
     $statement = $pdo->prepare($sql);
@@ -31,12 +25,6 @@ if (!empty($name) && !empty($email) && !empty($phone_number)) {
     $statement->bindValue(':email', $email, PDO::PARAM_STR);
     $statement->bindValue(':phone_number', $phone_number, PDO::PARAM_STR);
     $statement->execute();
-
-    $pdo = new PDO(
-        'mysql:host=mysql; dbname=bookingform; charset=utf8',
-        $dbUserName,
-        $dbPassword
-    );
 }
 ?>
 
